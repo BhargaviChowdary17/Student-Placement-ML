@@ -1,0 +1,350 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+    min-height: 100vh;
+}
+
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+/* Header */
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #666;
+    font-size: 16px;
+}
+
+
+/* Cards */
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+    margin-bottom: 25px;
+}
+
+
+/* Form */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d5d9df;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #4f46e5;
+}
+
+
+/* Predict Button */
+
+#predictButton {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    border: none;
+    border-radius: 9px;
+    background: #4f46e5;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#predictButton:hover {
+    background: #3730a3;
+}
+
+#predictButton:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+
+/* Results */
+
+.result-card {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#statusResult {
+    margin-bottom: 20px;
+}
+
+.status {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.status.placed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status.not-placed {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+
+/* Probability */
+
+.probability-box {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+}
+
+.probability-box h3 {
+    margin-bottom: 10px;
+}
+
+#probability {
+    font-size: 42px;
+    font-weight: bold;
+    color: #4f46e5;
+}
+
+
+/* Skill Gap */
+
+.skill-section {
+    margin-top: 25px;
+    text-align: left;
+}
+
+.skill-section h3 {
+    margin-bottom: 10px;
+}
+
+#skillSummary {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.skill-item {
+    background: #fff7ed;
+    border-left: 5px solid #f97316;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+}
+
+.skill-item h4 {
+    margin-bottom: 8px;
+    color: #c2410c;
+}
+
+.skill-item p {
+    margin: 5px 0;
+    color: #444;
+}
+
+.no-gap {
+    background: #ecfdf5;
+    border-left: 5px solid #16a34a;
+    padding: 15px;
+    border-radius: 8px;
+    color: #166534;
+}
+
+
+/* Footer */
+
+.footer {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    padding: 10px 0 20px;
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 95%;
+        padding: 20px 0;
+    }
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #probability {
+        font-size: 35px;
+    }
+}
+.reset-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 13px;
+    border: 1px solid #4f46e5;
+    border-radius: 9px;
+    background: white;
+    color: #4f46e5;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.reset-button:hover {
+    background: #eef2ff;
+}
+/* Probability Meter */
+
+.progress-container {
+    width: 100%;
+    height: 18px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 18px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.8s ease;
+    background: #4f46e5;
+}
+
+#probabilityMessage {
+    margin-top: 12px;
+    color: #666;
+    font-size: 14px;
+}
+/* Skill Gap Cards */
+
+.skill-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 5px solid #f97316;
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.skill-item h4 {
+    margin-bottom: 12px;
+    color: #c2410c;
+    font-size: 18px;
+}
+
+.skill-item p {
+    margin: 7px 0;
+    line-height: 1.5;
+}
+
+.skill-item strong {
+    color: #333;
+}
+
+.skill-item p:last-child {
+    background: #fff7ed;
+    padding: 10px;
+    border-radius: 7px;
+    margin-top: 12px;
+}
+
+.no-gap {
+    background: #ecfdf5;
+    border-left: 5px solid #16a34a;
+    padding: 18px;
+    border-radius: 10px;
+    color: #166534;
+    font-weight: 500;
+}
+.score-bar-container {
+    width: 100%;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 8px 0 15px;
+}
+
+.score-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.8s ease;
+}
+
+.student-score-bar {
+    background: #4f46e5;
+}
+
+.baseline-score-bar {
+    background: #94a3b8;
+}
