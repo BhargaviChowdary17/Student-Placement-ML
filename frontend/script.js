@@ -1,224 +1,362 @@
-const predictionForm = document.getElementById("predictionForm");
+const form = document.getElementById("predictionForm");
 const predictButton = document.getElementById("predictButton");
 
 const resultSection = document.getElementById("resultSection");
 const statusResult = document.getElementById("statusResult");
 const probability = document.getElementById("probability");
+const probabilityBar = document.getElementById("probabilityBar");
+const probabilityMessage = document.getElementById("probabilityMessage");
+
 const skillSummary = document.getElementById("skillSummary");
 const skillGaps = document.getElementById("skillGaps");
 
+const skillNameMap = {
+    coding_skills: "Coding Skills",
+    dsa_score: "DSA Score",
+    aptitude_score: "Aptitude Score",
+    communication_skills: "Communication Skills",
+    ml_knowledge: "ML Knowledge",
+    system_design: "System Design"
+};
 
-predictionForm.addEventListener("submit", async function (event) {
+
+// ===============================
+// FORM SUBMIT
+// ===============================
+
+form.addEventListener("submit", async function (event) {
+
     event.preventDefault();
 
     predictButton.disabled = true;
-    predictButton.textContent = "⏳ Predicting...";
+    predictButton.innerHTML = "⏳ Analyzing Profile...";
 
-    resultSection.classList.add("hidden");
+    resultSection.classList.remove("show");
 
     const studentData = {
+
         branch: document.getElementById("branch").value,
-        college_tier: document.getElementById("college_tier").value,
 
-        cgpa: Number(document.getElementById("cgpa").value),
-        backlogs: Number(document.getElementById("backlogs").value),
+        college_tier:
+            document.getElementById("college_tier").value,
 
-        coding_skills: Number(document.getElementById("coding_skills").value),
-        dsa_score: Number(document.getElementById("dsa_score").value),
-        aptitude_score: Number(document.getElementById("aptitude_score").value),
-        communication_skills: Number(
-            document.getElementById("communication_skills").value
-        ),
+        cgpa:
+            Number(document.getElementById("cgpa").value),
 
-        ml_knowledge: Number(document.getElementById("ml_knowledge").value),
-        system_design: Number(document.getElementById("system_design").value),
+        backlogs:
+            Number(document.getElementById("backlogs").value),
 
-        internships: Number(document.getElementById("internships").value),
-        projects_count: Number(document.getElementById("projects_count").value),
-        certifications: Number(document.getElementById("certifications").value),
-        hackathons: Number(document.getElementById("hackathons").value),
-        open_source_contributions: Number(
-            document.getElementById("open_source_contributions").value
-        ),
-        extracurriculars: Number(
-            document.getElementById("extracurriculars").value
-        )
+        coding_skills:
+            Number(document.getElementById("coding_skills").value),
+
+        dsa_score:
+            Number(document.getElementById("dsa_score").value),
+
+        aptitude_score:
+            Number(document.getElementById("aptitude_score").value),
+
+        communication_skills:
+            Number(document.getElementById("communication_skills").value),
+
+        ml_knowledge:
+            Number(document.getElementById("ml_knowledge").value),
+
+        system_design:
+            Number(document.getElementById("system_design").value),
+
+        internships:
+            Number(document.getElementById("internships").value),
+
+        projects_count:
+            Number(document.getElementById("projects_count").value),
+
+        certifications:
+            Number(document.getElementById("certifications").value),
+
+        hackathons:
+            Number(document.getElementById("hackathons").value),
+
+        open_source_contributions:
+            Number(document.getElementById("open_source_contributions").value),
+
+        extracurriculars:
+            Number(document.getElementById("extracurriculars").value)
     };
 
 
     try {
-        const response = await fetch("https://student-placement-ml.onrender.com/predict", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(studentData)
-        });
+
+        const response = await fetch(
+            "https://student-placement-ml.onrender.com/predict",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(studentData)
+            }
+        );
+
 
         if (!response.ok) {
             throw new Error("Prediction request failed");
         }
 
-        const result = await response.json();
 
-        displayResult(result);
+        const data = await response.json();
 
-    } catch (error) {
-        console.error("Error:", error);
+        showResults(data);
+
+    }
+
+    catch (error) {
+
+        console.error(error);
 
         alert(
-            "Unable to connect to the FastAPI server.\n\n" +
-            "Please make sure the backend server is running."
+            "Unable to connect to the prediction server. Please try again."
         );
 
-    } finally {
-        predictButton.disabled = false;
-        predictButton.textContent = "🔍 Predict Placement";
     }
+
+    finally {
+
+        predictButton.disabled = false;
+
+        predictButton.innerHTML = "Predict Placement";
+    }
+
 });
 
 
-function displayResult(result) {
+// ===============================
+// SHOW RESULTS
+// ===============================
 
-    resultSection.classList.remove("hidden");
+function showResults(data) {
 
-    if (result.prediction === 1) {
-    statusResult.innerHTML = `
-        <div class="status placed">
-            ✅ Prediction: Likely to be Placed
-        </div>
-    `;
-    } else {
-        statusResult.innerHTML = `
-            <div class="status not-placed">
-                ⚠️ Prediction: Not Likely to be Placed
-            </div>
-        `;
-    }
+    const isPlaced = data.prediction === 1;
+
+    const probabilityValue =
+        Number(data.placement_probability || 0);
+
+    const probabilityPercent =
+        probabilityValue.toFixed(2);
+
+
+    // -------------------------------
+    // Placement Status
+    // -------------------------------
+
+    statusResult.textContent =
+        isPlaced
+            ? "Likely to be Placed"
+            : "Not Likely to be Placed";
+
+
+    statusResult.className =
+        isPlaced
+            ? "status-badge success"
+            : "status-badge danger";
+
+
+    // -------------------------------
+    // Probability
+    // -------------------------------
 
     probability.textContent =
-        `${result.placement_probability}%`;
+        `${probabilityPercent}%`;
 
-    const probabilityBar = document.getElementById("probabilityBar");
-    const probabilityMessage = document.getElementById("probabilityMessage");
+    probabilityBar.style.width =
+        `${probabilityValue}%`;
 
-    const percentage = Number(result.placement_probability);
 
-    probabilityBar.style.width = `${percentage}%`;
+    // -------------------------------
+    // Probability Message
+    // -------------------------------
 
-    if (percentage >= 75) {
+    if (probabilityValue >= 75) {
+
         probabilityMessage.textContent =
-            "Higher estimated likelihood based on the model.";
-    } else if (percentage >= 50) {
+            "Your profile shows a relatively strong placement likelihood.";
+
+    }
+
+    else if (probabilityValue >= 50) {
+
         probabilityMessage.textContent =
-            "Moderate estimated likelihood based on the model.";
-    } else {
+            "Your profile shows a moderate placement likelihood. Improving key skills can strengthen your profile.";
+
+    }
+
+    else {
+
         probabilityMessage.textContent =
-            "Lower estimated likelihood based on the model.";
+            "Your profile shows a lower placement likelihood. Focus on the identified skill gaps and improve your preparation.";
+
     }
 
 
-    skillSummary.textContent =
-        result.skill_gap_summary;
+    // -------------------------------
+    // Skill Gap Summary
+    // -------------------------------
 
+    const gaps = data.skill_gaps || [];
 
-    skillGaps.innerHTML = "";
+    if (gaps.length === 0) {
 
-
-    if (result.skill_gaps.length === 0) {
+        skillSummary.textContent =
+            "🎉 No major skill gaps were identified.";
 
         skillGaps.innerHTML = `
-            <div class="no-gap">
-                ✅ No major skill gaps identified based on the dataset baseline.
+            <div class="no-gaps">
+                <div class="no-gaps-icon">✓</div>
+                <h3>Great Job!</h3>
+                <p>
+                    Your selected skills are at or above
+                    the dataset-based baseline.
+                </p>
             </div>
         `;
 
-    } else {
+    }
 
-        result.skill_gaps.forEach(function (gap) {
+    else {
 
-            const skillNameMap = {
-                coding_skills: "Coding Skills",
-                dsa_score: "DSA Score",
-                aptitude_score: "Aptitude Score",
-                communication_skills: "Communication Skills",
-                ml_knowledge: "ML Knowledge",
-                system_design: "System Design"
-            };
+        skillSummary.textContent =
+            `${gaps.length} skill area${gaps.length > 1 ? "s" : ""} need improvement.`;
 
-            const skillName = skillNameMap[gap.skill] || gap.skill;
+        skillGaps.innerHTML = "";
 
-            const maxScore =
-                gap.skill === "aptitude_score" ? 100 : 10;
+        gaps.forEach(gap => {
 
-            const studentPercentage =
-                Math.min((gap.student_score / maxScore) * 100, 100);
+            const skillName =
+                skillNameMap[gap.skill] || gap.skill;
 
-            const baselinePercentage =
-                Math.min((gap.dataset_baseline / maxScore) * 100, 100);
+            const score =
+                Number(gap.score);
 
-            skillGaps.innerHTML += `
-                <div class="skill-item">
-                    <h4>${skillName}</h4>
+            const baseline =
+                Number(gap.baseline);
 
-                    <p>
-                        <strong>Your Score:</strong>
-                        ${gap.student_score}
-                    </p>
+            const maxValue =
+                gap.skill === "aptitude_score"
+                    ? 100
+                    : 10;
 
-                    <div class="score-bar-container">
-                        <div
-                            class="score-bar student-score-bar"
-                            style="width: ${studentPercentage}%">
-                        </div>
+            const scorePercent =
+                Math.min(
+                    (score / maxValue) * 100,
+                    100
+                );
+
+
+            const card = document.createElement("div");
+
+            card.className = "skill-item";
+
+
+            card.innerHTML = `
+
+                <div class="skill-header">
+
+                    <div>
+                        <h3>${skillName}</h3>
+                        <span>
+                            Your Score: ${score}
+                        </span>
                     </div>
 
-                    <p>
-                        <strong>Dataset Baseline:</strong>
-                        ${gap.dataset_baseline}
-                    </p>
-
-                    <div class="score-bar-container">
-                        <div
-                            class="score-bar baseline-score-bar"
-                            style="width: ${baselinePercentage}%">
-                        </div>
+                    <div class="skill-baseline">
+                        Baseline: ${baseline}
                     </div>
 
-                    <p>
-                        <strong>Status:</strong>
-                        ${gap.status}
-                    </p>
+                </div>
+
+
+                <div class="skill-progress">
+
+                    <div
+                        class="skill-progress-fill"
+                        style="width:${scorePercent}%"
+                    ></div>
+
+                </div>
+
+
+                <div class="skill-recommendation">
+
+                    <strong>💡 Recommendation</strong>
 
                     <p>
-                        <strong>Recommendation:</strong>
                         ${gap.recommendation}
                     </p>
+
                 </div>
+
             `;
+
+
+            skillGaps.appendChild(card);
 
         });
 
     }
 
-    resultSection.scrollIntoView({
-        behavior: "smooth"
-    });
+
+    // -------------------------------
+    // Show Result Section
+    // -------------------------------
+
+    resultSection.classList.add("show");
+
+    setTimeout(() => {
+
+        resultSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }, 150);
+
 }
-const resetButton = document.getElementById("resetButton");
 
-resetButton.addEventListener("click", function () {
-    predictionForm.reset();
 
-    resultSection.classList.add("hidden");
+// ===============================
+// RESET BUTTON
+// ===============================
 
-    statusResult.innerHTML = "";
-    probability.textContent = "--%";
-    skillSummary.textContent = "";
-    skillGaps.innerHTML = "";
+const resetButton =
+    document.getElementById("resetButton");
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+
+if (resetButton) {
+
+    resetButton.addEventListener("click", function () {
+
+        form.reset();
+
+        resultSection.classList.remove("show");
+
+        statusResult.textContent = "";
+
+        probability.textContent = "0%";
+
+        probabilityBar.style.width = "0%";
+
+        probabilityMessage.textContent = "";
+
+        skillSummary.textContent = "";
+
+        skillGaps.innerHTML = "";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
     });
-});
+
+}
