@@ -5,625 +5,374 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Student Placement AI</title>
+    <title>Student Placement Prediction System</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Background Decoration -->
-    <div class="background-glow glow-one"></div>
-    <div class="background-glow glow-two"></div>
-
     <div class="container">
 
-        <!-- ================= HEADER ================= -->
+        <!-- Header -->
+        <header class="header">
+            <h1>Student Placement Prediction System</h1>
 
-        <header class="hero">
-
-            <div class="hero-badge">
-                ✨ AI-Powered Career Assistant
-            </div>
-
-            <h1>
-                Student Placement
-                <span>Predictor</span>
-            </h1>
-
-            <p class="hero-description">
-                ML-Based Placement Prediction & Personalized
-                Skill-Gap Recommendation System
+            <p>
+                ML-Based Placement Prediction and Personalized Skill-Gap Recommendation
             </p>
-
-            <div class="hero-features">
-
-                <div class="feature-pill">
-                    🤖 Machine Learning
-                </div>
-
-                <div class="feature-pill">
-                    📊 Skill Analysis
-                </div>
-
-                <div class="feature-pill">
-                    🎯 Personalized Guidance
-                </div>
-
-            </div>
-
         </header>
 
 
-        <!-- ================= INPUT CARD ================= -->
+        <!-- Student Details -->
+        <section class="card">
 
-        <section class="main-card">
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    🎓
-                </div>
-
-                <div>
-                    <h2>Student Profile</h2>
-
-                    <p>
-                        Enter your academic, technical and experience details
-                    </p>
-                </div>
-
-            </div>
-
+            <h2>Enter Student Details</h2>
 
             <form id="predictionForm">
 
+                <div class="form-grid">
 
-                <!-- ===== ACADEMIC PROFILE ===== -->
+                    <!-- Branch -->
+                    <div class="form-group">
+                        <label for="branch">Branch</label>
 
-                <div class="form-section">
-
-                    <div class="form-section-title">
-
-                        <span>📚</span>
-
-                        <div>
-                            <h3>Academic Profile</h3>
-                            <p>Your educational background</p>
-                        </div>
-
+                        <select id="branch" required>
+                            <option value="">Select Branch</option>
+                            <option value="CSE">CSE</option>
+                            <option value="IT">IT</option>
+                            <option value="ECE">ECE</option>
+                            <option value="EE">EE</option>
+                            <option value="ME">ME</option>
+                            <option value="CE">CE</option>
+                            <option value="Chemical">Chemical</option>
+                        </select>
                     </div>
 
 
-                    <div class="form-grid">
+                    <!-- College Tier -->
+                    <div class="form-group">
+                        <label for="college_tier">College Tier</label>
 
-                        <div class="form-group">
-
-                            <label for="branch">
-                                Branch
-                            </label>
-
-                            <select id="branch" required>
-
-                                <option value="">
-                                    Select Branch
-                                </option>
-
-                                <option value="CSE">CSE</option>
-                                <option value="IT">IT</option>
-                                <option value="ECE">ECE</option>
-                                <option value="EE">EE</option>
-                                <option value="ME">ME</option>
-                                <option value="CE">CE</option>
-                                <option value="Chemical">Chemical</option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="college_tier">
-                                College Tier
-                            </label>
-
-                            <select id="college_tier" required>
-
-                                <option value="">
-                                    Select Tier
-                                </option>
-
-                                <option value="Tier-1">Tier-1</option>
-                                <option value="Tier-2">Tier-2</option>
-                                <option value="Tier-3">Tier-3</option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="cgpa">
-                                CGPA
-                            </label>
-
-                            <input
-                                type="number"
-                                id="cgpa"
-                                min="0"
-                                max="10"
-                                step="0.01"
-                                placeholder="Example: 8.2"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="backlogs">
-                                Backlogs
-                            </label>
-
-                            <input
-                                type="number"
-                                id="backlogs"
-                                min="0"
-                                step="1"
-                                placeholder="Example: 0"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- ===== TECHNICAL SKILLS ===== -->
-
-                <div class="form-section">
-
-                    <div class="form-section-title">
-
-                        <span>💻</span>
-
-                        <div>
-                            <h3>Technical Skills</h3>
-                            <p>Rate your current technical knowledge</p>
-                        </div>
-
+                        <select id="college_tier" required>
+                            <option value="">Select Tier</option>
+                            <option value="Tier-1">Tier-1</option>
+                            <option value="Tier-2">Tier-2</option>
+                            <option value="Tier-3">Tier-3</option>
+                        </select>
                     </div>
 
 
-                    <div class="form-grid">
+                    <!-- CGPA -->
+                    <div class="form-group">
+                        <label for="cgpa">CGPA</label>
 
-                        <div class="form-group">
-
-                            <label for="coding_skills">
-                                Coding Skills
-                                <span class="range-label">1–10</span>
-                            </label>
-
-                            <input
-                                type="number"
-                                id="coding_skills"
-                                min="1"
-                                max="10"
-                                step="0.1"
-                                placeholder="Example: 8"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="dsa_score">
-                                DSA Score
-                                <span class="range-label">1–10</span>
-                            </label>
-
-                            <input
-                                type="number"
-                                id="dsa_score"
-                                min="1"
-                                max="10"
-                                step="0.1"
-                                placeholder="Example: 7"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="aptitude_score">
-                                Aptitude Score
-                                <span class="range-label">20–100</span>
-                            </label>
-
-                            <input
-                                type="number"
-                                id="aptitude_score"
-                                min="20"
-                                max="100"
-                                step="1"
-                                placeholder="Example: 75"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="communication_skills">
-                                Communication Skills
-                                <span class="range-label">1–10</span>
-                            </label>
-
-                            <input
-                                type="number"
-                                id="communication_skills"
-                                min="1"
-                                max="10"
-                                step="0.1"
-                                placeholder="Example: 8"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="ml_knowledge">
-                                ML Knowledge
-                                <span class="range-label">0–10</span>
-                            </label>
-
-                            <input
-                                type="number"
-                                id="ml_knowledge"
-                                min="0"
-                                max="10"
-                                step="0.1"
-                                placeholder="Example: 6"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="system_design">
-                                System Design
-                                <span class="range-label">0–10</span>
-                            </label>
-
-                            <input
-                                type="number"
-                                id="system_design"
-                                min="0"
-                                max="10"
-                                step="0.1"
-                                placeholder="Example: 5"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- ===== EXPERIENCE ===== -->
-
-                <div class="form-section">
-
-                    <div class="form-section-title">
-
-                        <span>🚀</span>
-
-                        <div>
-                            <h3>Experience & Achievements</h3>
-                            <p>Your practical exposure and activities</p>
-                        </div>
-
+                        <input
+                            type="number"
+                            id="cgpa"
+                            min="0"
+                            max="10"
+                            step="0.01"
+                            placeholder="Example: 8.2"
+                            required
+                        >
                     </div>
 
 
-                    <div class="form-grid">
+                    <!-- Backlogs -->
+                    <div class="form-group">
+                        <label for="backlogs">Backlogs</label>
 
-                        <div class="form-group">
-
-                            <label for="internships">
-                                Internships
-                            </label>
-
-                            <input
-                                type="number"
-                                id="internships"
-                                min="0"
-                                step="1"
-                                placeholder="Example: 2"
-                                required
-                            >
-
-                        </div>
+                        <input
+                            type="number"
+                            id="backlogs"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 0"
+                            required
+                        >
+                    </div>
 
 
-                        <div class="form-group">
+                    <!-- Coding -->
+                    <div class="form-group">
+                        <label for="coding_skills">Coding Skills (1-10)</label>
 
-                            <label for="projects_count">
-                                Projects
-                            </label>
-
-                            <input
-                                type="number"
-                                id="projects_count"
-                                min="0"
-                                step="1"
-                                placeholder="Example: 3"
-                                required
-                            >
-
-                        </div>
+                        <input
+                            type="number"
+                            id="coding_skills"
+                            min="1"
+                            max="10"
+                            step="0.1"
+                            placeholder="Example: 8"
+                            required
+                        >
+                    </div>
 
 
-                        <div class="form-group">
+                    <!-- DSA -->
+                    <div class="form-group">
+                        <label for="dsa_score">DSA Score (1-10)</label>
 
-                            <label for="certifications">
-                                Certifications
-                            </label>
-
-                            <input
-                                type="number"
-                                id="certifications"
-                                min="0"
-                                step="1"
-                                placeholder="Example: 2"
-                                required
-                            >
-
-                        </div>
+                        <input
+                            type="number"
+                            id="dsa_score"
+                            min="1"
+                            max="10"
+                            step="0.1"
+                            placeholder="Example: 7"
+                            required
+                        >
+                    </div>
 
 
-                        <div class="form-group">
+                    <!-- Aptitude -->
+                    <div class="form-group">
+                        <label for="aptitude_score">Aptitude Score (20-100)</label>
 
-                            <label for="hackathons">
-                                Hackathons
-                            </label>
-
-                            <input
-                                type="number"
-                                id="hackathons"
-                                min="0"
-                                step="1"
-                                placeholder="Example: 1"
-                                required
-                            >
-
-                        </div>
+                        <input
+                            type="number"
+                            id="aptitude_score"
+                            min="20"
+                            max="100"
+                            step="1"
+                            placeholder="Example: 75"
+                            required
+                        >
+                    </div>
 
 
-                        <div class="form-group">
+                    <!-- Communication -->
+                    <div class="form-group">
+                        <label for="communication_skills">
+                            Communication Skills (1-10)
+                        </label>
 
-                            <label for="open_source_contributions">
-                                Open Source Contributions
-                            </label>
-
-                            <input
-                                type="number"
-                                id="open_source_contributions"
-                                min="0"
-                                step="1"
-                                placeholder="Example: 1"
-                                required
-                            >
-
-                        </div>
+                        <input
+                            type="number"
+                            id="communication_skills"
+                            min="1"
+                            max="10"
+                            step="0.1"
+                            placeholder="Example: 8"
+                            required
+                        >
+                    </div>
 
 
-                        <div class="form-group">
+                    <!-- ML Knowledge -->
+                    <div class="form-group">
+                        <label for="ml_knowledge">ML Knowledge (0-10)</label>
 
-                            <label for="extracurriculars">
-                                Extracurriculars
-                            </label>
+                        <input
+                            type="number"
+                            id="ml_knowledge"
+                            min="0"
+                            max="10"
+                            step="0.1"
+                            placeholder="Example: 6"
+                            required
+                        >
+                    </div>
 
-                            <input
-                                type="number"
-                                id="extracurriculars"
-                                min="0"
-                                step="1"
-                                placeholder="Example: 2"
-                                required
-                            >
 
-                        </div>
+                    <!-- System Design -->
+                    <div class="form-group">
+                        <label for="system_design">System Design (0-10)</label>
 
+                        <input
+                            type="number"
+                            id="system_design"
+                            min="0"
+                            max="10"
+                            step="0.1"
+                            placeholder="Example: 5"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Internships -->
+                    <div class="form-group">
+                        <label for="internships">Internships</label>
+
+                        <input
+                            type="number"
+                            id="internships"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 2"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Projects -->
+                    <div class="form-group">
+                        <label for="projects_count">Projects Count</label>
+
+                        <input
+                            type="number"
+                            id="projects_count"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 3"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Certifications -->
+                    <div class="form-group">
+                        <label for="certifications">Certifications</label>
+
+                        <input
+                            type="number"
+                            id="certifications"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 3"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Hackathons -->
+                    <div class="form-group">
+                        <label for="hackathons">Hackathons</label>
+
+                        <input
+                            type="number"
+                            id="hackathons"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 1"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Open Source -->
+                    <div class="form-group">
+                        <label for="open_source_contributions">
+                            Open Source Contributions
+                        </label>
+
+                        <input
+                            type="number"
+                            id="open_source_contributions"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 1"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Extracurriculars -->
+                    <div class="form-group">
+                        <label for="extracurriculars">Extracurriculars</label>
+
+                        <input
+                            type="number"
+                            id="extracurriculars"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 2"
+                            required
+                        >
                     </div>
 
                 </div>
 
 
+                <!-- Buttons -->
+                <div class="button-group">
 
-                <!-- ===== BUTTONS ===== -->
-
-                <div class="button-area">
-
-                    <button
-                        type="submit"
-                        id="predictButton"
-                    >
-                        <span>🔍</span>
-                        Predict My Placement
+                    <button type="submit" id="predictButton">
+                        Predict Placement
                     </button>
-
 
                     <button
                         type="button"
                         id="resetButton"
                         class="reset-button"
                     >
-                        ↻ Reset Form
+                        Reset
                     </button>
 
                 </div>
-
 
             </form>
 
         </section>
 
 
+        <!-- Result Section -->
+        <section id="resultSection" class="card result-card hidden">
 
-        <!-- ================= RESULT ================= -->
-
-        <section
-            id="resultSection"
-            class="result-card hidden"
-        >
-
-            <div class="result-header">
-
-                <div class="result-icon">
-                    📊
-                </div>
-
-                <div>
-
-                    <h2>Prediction Results</h2>
-
-                    <p>
-                        AI-generated analysis of your placement profile
-                    </p>
-
-                </div>
-
-            </div>
-
+            <h2>Prediction Result</h2>
 
             <div id="statusResult"></div>
 
 
             <!-- Probability -->
-
             <div class="probability-box">
 
-                <div class="probability-content">
+                <h3>Estimated Placement Probability</h3>
 
-                    <div>
-
-                        <h3>
-                            Estimated Placement Probability
-                        </h3>
-
-                        <p id="probabilityMessage">
-                            Enter your details and predict your placement.
-                        </p>
-
-                    </div>
-
-
-                    <div id="probability">
-                        --%
-                    </div>
-
-                </div>
-
+                <div id="probability">--%</div>
 
                 <div class="progress-container">
-
                     <div
                         id="probabilityBar"
                         class="progress-bar"
                     ></div>
-
                 </div>
+
+                <p id="probabilityMessage">
+                    Enter your details and predict your placement.
+                </p>
 
             </div>
 
 
-
             <!-- Skill Gap -->
-
             <div class="skill-section">
 
-                <div class="skill-heading">
-
-                    <span>🎯</span>
-
-                    <div>
-
-                        <h3>
-                            Personalized Skill Gap Analysis
-                        </h3>
-
-                        <p>
-                            Areas where you can improve your placement readiness
-                        </p>
-
-                    </div>
-
-                </div>
-
+                <h3>Skill Gap Analysis</h3>
 
                 <p id="skillSummary"></p>
-
 
                 <div id="skillGaps"></div>
 
             </div>
 
 
-            <!-- Try Again -->
-
             <button
                 type="button"
-                class="result-reset"
-                onclick="document.getElementById('resetButton').click()"
+                id="resultResetButton"
+                class="reset-button"
             >
-                ← Analyze Another Profile
+                Analyze Another Profile
             </button>
 
         </section>
 
 
-
-        <!-- ================= FOOTER ================= -->
-
+        <!-- Footer -->
         <footer class="footer">
 
-            <div class="footer-line"></div>
-
             <p>
-                🤖 Powered by Machine Learning & FastAPI
+                Educational Domain. Predictions are estimates only and do not guarantee placement.
             </p>
 
-            <small>
-                ⚠️ Educational prototype. Predictions are estimates
-                and do not guarantee placement.
-            </small>
-
         </footer>
-
 
     </div>
 
 
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=5"></script>
 
 </body>
 
