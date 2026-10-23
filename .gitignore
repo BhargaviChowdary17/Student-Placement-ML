@@ -1,17 +1,47 @@
-# Python virtual environment
+﻿# Python virtual environment
 venv/
+.venv/
 
 # Python cache files
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
 
-# VS Code settings
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE settings
 .vscode/
+.idea/
 
-# Jupyter notebook checkpoints
+# Jupyter checkpoints
 .ipynb_checkpoints/
 
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Temporary and generated files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Local databases and backups
+*.db
+*.sqlite
+*.sqlite3
+backup_before_*/
+
+# Large trained model artifacts
+# Keep model files out of regular Git until a storage strategy is chosen
+
+# Local backup copies
+backend/*_before_*.py
+frontend/*_before_*.js
+
+# Generated project inventory files
+file_inventory.csv
+project_structure.txt

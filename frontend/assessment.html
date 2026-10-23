@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Placement Assessment</title>
+
+    <link rel="stylesheet" href="assessment.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="page-header">
+        <h1>Student Placement Assessment</h1>
+        <p>Test your aptitude, Python, Java, C, C++ and problem-solving skills</p>
+    </header>
+
+    <!-- Start Section -->
+    <section id="startSection" class="card start-screen">
+
+        <h2>Placement Assessment</h2>
+
+        <p class="intro-text">
+            This assessment evaluates your aptitude, programming and
+            problem-solving skills.
+        </p>
+
+        <div class="assessment-info">
+
+            <div class="info-box">
+                <h3>Section 1</h3>
+                <strong>15 MCQs</strong>
+                <p>5 Basic • 5 Intermediate • 5 Advanced</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Section 2</h3>
+                <strong>2 Coding Problems</strong>
+                <p>Python • Java • C • C++</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Time</h3>
+                <strong>15 Minutes</strong>
+                <p>MCQ section</p>
+            </div>
+
+        </div>
+
+        <div class="instruction-box">
+
+            <h3>Instructions</h3>
+
+            <ul>
+                <li>Answer all 15 MCQ questions.</li>
+                <li>Questions include three difficulty levels.</li>
+                <li>Complete both coding problems.</li>
+                <li>Select Python, Java, C or C++ for coding.</li>
+                <li>Use the Run Code button to test your solution.</li>
+                <li>Submit Code checks your solution using hidden test cases.</li>
+            </ul>
+
+        </div>
+
+        <button id="startButton" class="primary-button" type="button">
+            Start Assessment
+        </button>
+
+    </section>
+
+    <!-- MCQ Section -->
+    <section id="assessmentSection" class="card" style="display:none;">
+
+        <div class="assessment-top">
+
+            <div>
+                <h2>MCQ Assessment</h2>
+                <p id="levelInfo">Level</p>
+            </div>
+
+            <div class="timer-box">
+                <span>Time Left</span>
+                <strong id="timer">15:00</strong>
+            </div>
+
+        </div>
+
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <div class="question-header">
+            <span id="questionNumber">Question 1 of 15</span>
+        </div>
+
+        <div id="questionContainer"></div>
+
+        <div class="navigation-buttons">
+
+            <button
+                id="previousButton"
+                class="secondary-button"
+                type="button">
+                Previous
+            </button>
+
+            <button
+                id="nextButton"
+                class="primary-button"
+                type="button">
+                Next
+            </button>
+
+            <button
+                id="submitButton"
+                class="success-button"
+                type="button"
+                style="display:none;">
+                Submit MCQ
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Coding Section -->
+    <section id="codingSection" class="coding-section" style="display:none;">
+
+        <div class="coding-page-header">
+
+            <div>
+                <h2>Coding Assessment</h2>
+                <p>
+                    Choose your preferred programming language and solve the problems.
+                </p>
+            </div>
+
+            <div class="coding-timer">
+                <span>Coding Time</span>
+                <strong id="codingTimer">20:00</strong>
+            </div>
+
+        </div>
+
+        <!-- Problem 1 -->
+        <div class="coding-problem card">
+
+            <div class="problem-title">
+
+                <h2>Problem 1: Find the Second Largest Number</h2>
+
+                <span class="difficulty intermediate">
+                    Intermediate
+                </span>
+
+            </div>
+
+            <div class="problem-body">
+
+                <h3>Problem Statement</h3>
+
+                <p>
+                    Given a list of numbers, find and print the second
+                    largest number in the list.
+                </p>
+
+                <h3>Input Format</h3>
+
+                <p>
+                    The input contains space-separated integers.
+                </p>
+
+                <h3>Output Format</h3>
+
+                <p>
+                    Print the second largest number.
+                </p>
+
+                <h3>Example</h3>
+
+                <div class="example-box">
+
+                    <div>
+                        <strong>Input</strong>
+                        <pre>10 5 8 20 15</pre>
+                    </div>
+
+                    <div>
+                        <strong>Output</strong>
+                        <pre>15</pre>
+                    </div>
+
+                </div>
+
+                <div class="language-select">
+
+                    <label for="language1">
+                        Programming Language
+                    </label>
+
+                    <select id="language1">
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                    </select>
+
+                </div>
+
+                <h3>Code Editor</h3>
+
+                <textarea
+                    id="codeEditor1"
+                    class="code-editor"
+                    spellcheck="false"
+                    placeholder="Write your code here..."></textarea>
+
+                <div class="coding-actions">
+
+                    <button
+                        id="runButton1"
+                        type="button"
+                        class="primary-button">
+                        ▶ Run Code
+                    </button>
+
+                    <button
+                        id="resetButton1"
+                        type="button"
+                        class="secondary-button">
+                        Reset
+                    </button>
+
+                    <button
+                        id="submitCodeButton1"
+                        type="button"
+                        class="success-button">
+                        Submit Code
+                    </button>
+
+                </div>
+
+                <div class="input-output-grid">
+
+                    <div>
+
+                        <h3>Custom Input</h3>
+
+                        <textarea
+                            id="customInput1"
+                            class="custom-input"
+                            placeholder="Example: 10 5 8 20 15">10 5 8 20 15</textarea>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Output</h3>
+
+                        <div
+                            id="resultBox1"
+                            class="result-box">
+                            Output will appear here.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="testResultBox1"
+                    class="test-result-box">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Problem 2 -->
+        <div class="coding-problem card">
+
+            <div class="problem-title">
+
+                <h2>Problem 2: First Non-Repeating Character</h2>
+
+                <span class="difficulty advanced">
+                    Advanced
+                </span>
+
+            </div>
+
+            <div class="problem-body">
+
+                <h3>Problem Statement</h3>
+
+                <p>
+                    Given a string, find the first character that appears
+                    only once. If no such character exists, print -1.
+                </p>
+
+                <h3>Input Format</h3>
+
+                <p>
+                    The input contains a single string.
+                </p>
+
+                <h3>Output Format</h3>
+
+                <p>
+                    Print the first non-repeating character.
+                </p>
+
+                <h3>Example</h3>
+
+                <div class="example-box">
+
+                    <div>
+                        <strong>Input</strong>
+                        <pre>swiss</pre>
+                    </div>
+
+                    <div>
+                        <strong>Output</strong>
+                        <pre>w</pre>
+                    </div>
+
+                </div>
+
+                <div class="language-select">
+
+                    <label for="language2">
+                        Programming Language
+                    </label>
+
+                    <select id="language2">
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                    </select>
+
+                </div>
+
+                <h3>Code Editor</h3>
+
+                <textarea
+                    id="codeEditor2"
+                    class="code-editor"
+                    spellcheck="false"
+                    placeholder="Write your code here..."></textarea>
+
+                <div class="coding-actions">
+
+                    <button
+                        id="runButton2"
+                        type="button"
+                        class="primary-button">
+                        ▶ Run Code
+                    </button>
+
+                    <button
+                        id="resetButton2"
+                        type="button"
+                        class="secondary-button">
+                        Reset
+                    </button>
+
+                    <button
+                        id="submitCodeButton2"
+                        type="button"
+                        class="success-button">
+                        Submit Code
+                    </button>
+
+                </div>
+
+                <div class="input-output-grid">
+
+                    <div>
+
+                        <h3>Custom Input</h3>
+
+                        <textarea
+                            id="customInput2"
+                            class="custom-input"
+                            placeholder="Example: swiss">swiss</textarea>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Output</h3>
+
+                        <div
+                            id="resultBox2"
+                            class="result-box">
+                            Output will appear here.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="testResultBox2"
+                    class="test-result-box">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="coding-submit-area">
+
+            <button
+                id="submitCodingButton"
+                type="button"
+                class="success-button large-button">
+                Submit Coding Section
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Result Section -->
+    <section
+        id="resultSection"
+        class="card result-section"
+        style="display:none;">
+
+        <div class="result-header">
+
+            <h2>Assessment Completed</h2>
+
+            <p>
+                Your placement assessment results are ready.
+            </p>
+
+        </div>
+
+        <div class="score-grid">
+
+            <div class="score-card">
+                <span>MCQ Score</span>
+                <strong id="scoreText">0/15</strong>
+            </div>
+
+            <div class="score-card">
+                <span>Overall Score</span>
+                <strong id="percentageText">0%</strong>
+            </div>
+
+            <div class="score-card">
+                <span>Correct Answers</span>
+                <strong id="correctText">0</strong>
+            </div>
+
+            <div class="score-card">
+                <span>Incorrect Answers</span>
+                <strong id="incorrectText">0</strong>
+            </div>
+
+        </div>
+
+        <div class="performance-card">
+
+            <h3>MCQ Performance</h3>
+
+            <p id="performanceText">
+                Your performance will appear here.
+            </p>
+
+        </div>
+        
+        <div class="performance-card">
+            <h3>Coding Assessment Results</h3>
+
+            <p>
+                <strong>Problem 1 — Second Largest Number:</strong>
+                <span id="codingProblem1Result">Not available</span>
+            </p>
+
+            <p>
+                <strong>Hidden Test Cases:</strong>
+                <span id="codingProblem1Tests">Not available</span>
+            </p>
+
+            <p>
+                <strong>Problem 2 — First Non-Repeating Character:</strong>
+                <span id="codingProblem2Result">Not available</span>
+            </p>
+
+            <p>
+                <strong>Hidden Test Cases:</strong>
+                <span id="codingProblem2Tests">Not available</span>
+            </p>
+
+            <p>
+                <strong>Coding Average:</strong>
+                <span id="codingAverageResult">0%</span>
+            </p>
+        </div>
+
+        <div class="performance-card">
+            <h3>Estimated Placement Readiness</h3>
+
+            <p>
+                This result is an ML-based estimate, not a job guarantee.
+            </p>
+
+            <p>
+                <strong>Prediction:</strong>
+                <span id="mlPredictionStatus">Calculating...</span>
+            </p>
+
+            <p>
+                <strong>Model Probability:</strong>
+                <span id="mlProbability">Calculating...</span>
+            </p>
+        </div>  
+
+        
+        <div class="performance-card" id="attemptComparisonCard" style="display: none;">
+            <h3>Previous vs Current Assessment</h3>
+
+            <p><strong>Previous Score:</strong>
+                <span id="previousAttemptScore">--</span>
+            </p>
+
+            <p><strong>Current Score:</strong>
+                <span id="currentAttemptScore">--</span>
+            </p>
+
+            <p><strong>Assessment Score Change:</strong>
+                <span id="attemptScoreChange">--</span>
+            </p>
+
+            <p><strong>Previous Placement Probability:</strong>
+                <span id="previousAttemptProbability">--</span>
+            </p>
+
+            <p><strong>Current Placement Probability:</strong>
+                <span id="currentAttemptProbability">--</span>
+            </p>
+
+            <p><strong>Progress:</strong>
+                <span id="attemptProgressMessage">--</span>
+            </p>
+        </div>
+
+
+        <div class="performance-card">
+
+            <h3>Question Review</h3>
+
+            <div id="reviewContainer"></div>
+
+        </div>
+
+        <div class="result-actions">
+
+            <button
+                id="retakeButton"
+                type="button"
+                class="primary-button">
+                Retake Assessment
+            </button>
+
+            <a
+                href="index.html"
+                class="secondary-button result-home-button">
+                Back to Dashboard
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script src="assessment.js"></script>
+
+</body>
+</html>

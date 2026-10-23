@@ -1,76 +1,125 @@
-/* ================================
-   General
-================================ */
-
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f8;
-    color: #222;
+    background: #f3f6fa;
+    color: #172033;
     line-height: 1.6;
+}
+
+.top-header {
+    background: white;
+    border-bottom: 1px solid #dfe5ec;
+    padding: 28px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.top-header h1 {
+    font-size: 32px;
+    color: #12213f;
+    margin-bottom: 5px;
+}
+
+.top-header p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+.header-buttons {
+    flex-shrink: 0;
+}
+
+.assessment-button {
+    display: inline-block;
+    padding: 13px 20px;
+    background: #1d4ed8;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.assessment-button:hover {
+    background: #163da8;
+    transform: translateY(-1px);
 }
 
 .container {
     width: 90%;
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px 0;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 45px 0;
 }
 
-
-/* ================================
-   Header
-================================ */
-
-.header {
-    text-align: center;
-    margin-bottom: 30px;
+.intro-section {
+    margin-bottom: 28px;
 }
 
-.header h1 {
-    font-size: 32px;
-    color: #1f2937;
-    margin-bottom: 10px;
+.intro-section h2 {
+    font-size: 28px;
+    color: #12213f;
+    margin-bottom: 6px;
 }
 
-.header p {
-    color: #666;
+.intro-section p {
+    color: #64748b;
     font-size: 16px;
 }
 
+.form-card {
+    background: white;
+    border: 1px solid #dce3eb;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+}
 
-/* ================================
-   Cards
-================================ */
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 25px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid #e5eaf0;
+}
 
-.card {
-    background: #ffffff;
-    border: 1px solid #dcdfe3;
+.section-heading > span {
+    width: 46px;
+    height: 46px;
     border-radius: 8px;
-    padding: 30px;
-    margin-bottom: 25px;
+    background: #edf3ff;
+    color: #1d4ed8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
 }
 
-.card h2 {
-    font-size: 24px;
-    color: #1f2937;
-    margin-bottom: 25px;
+.section-heading h2 {
+    color: #172033;
+    font-size: 21px;
+    margin-bottom: 2px;
 }
 
-
-/* ================================
-   Form
-================================ */
+.section-heading p {
+    color: #718096;
+    font-size: 14px;
+}
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 30px;
 }
 
 .form-group {
@@ -79,304 +128,350 @@ body {
 }
 
 .form-group label {
-    font-size: 14px;
+    color: #24324a;
     font-weight: 600;
-    margin-bottom: 7px;
-    color: #374151;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.form-group label small {
+    float: right;
+    color: #718096;
+    font-weight: 400;
+    font-size: 13px;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 11px 12px;
-    border: 1px solid #cfd4da;
-    border-radius: 5px;
-    background: #ffffff;
-    font-size: 15px;
-    color: #222;
+    height: 52px;
+    padding: 0 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: white;
+    color: #172033;
+    font-size: 16px;
     outline: none;
+    transition: 0.2s;
+}
+
+.form-group input::placeholder {
+    color: #9aa5b5;
 }
 
 .form-group input:focus,
 .form-group select:focus {
     border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-
-/* ================================
-   Buttons
-================================ */
-
-.button-group {
-    margin-top: 25px;
+.action-section {
     display: flex;
-    gap: 12px;
+    gap: 15px;
+    margin: 30px 0;
 }
 
-#predictButton,
+.predict-button,
 .reset-button {
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 25px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    transition: 0.2s;
 }
 
-#predictButton {
+.predict-button {
     flex: 1;
-    border: none;
-    background: #2563eb;
+    background: #1d4ed8;
     color: white;
 }
 
-#predictButton:hover {
-    background: #1d4ed8;
-}
-
-#predictButton:disabled {
-    background: #9ca3af;
-    cursor: not-allowed;
+.predict-button:hover {
+    background: #163da8;
 }
 
 .reset-button {
-    border: 1px solid #2563eb;
     background: white;
-    color: #2563eb;
+    color: #334155;
+    border: 1px solid #cbd5e1;
 }
 
 .reset-button:hover {
-    background: #eff6ff;
+    background: #f8fafc;
 }
-
-
-/* ================================
-   Results
-================================ */
 
 .hidden {
     display: none;
 }
 
+.result-section {
+    margin-top: 30px;
+}
+
 .result-card {
+    background: white;
+    border: 1px solid #dce3eb;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+}
+
+.result-card > h2 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #12213f;
+}
+
+.prediction-status {
+    padding: 18px;
+    border-radius: 8px;
+    background: #edf3ff;
+    color: #1d4ed8;
+    font-size: 21px;
+    font-weight: 700;
     text-align: center;
+    margin-bottom: 20px;
 }
-
-#statusResult {
-    margin-bottom: 25px;
-}
-
-.status {
-    display: inline-block;
-    padding: 10px 18px;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.status.placed {
-    background: #dcfce7;
-    color: #166534;
-    border: 1px solid #bbf7d0;
-}
-
-.status.not-placed {
-    background: #fee2e2;
-    color: #991b1b;
-    border: 1px solid #fecaca;
-}
-
-
-/* ================================
-   Probability
-================================ */
 
 .probability-box {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 7px;
+    border-radius: 10px;
     padding: 25px;
+    text-align: center;
     margin-bottom: 25px;
 }
 
-.probability-box h3 {
-    color: #374151;
-    margin-bottom: 10px;
+.probability-box span {
+    display: block;
+    color: #64748b;
+    margin-bottom: 5px;
 }
 
-#probability {
-    font-size: 40px;
-    font-weight: 700;
-    color: #2563eb;
+.probability-box strong {
+    display: block;
+    color: #1d4ed8;
+    font-size: 38px;
 }
 
-.progress-container {
-    width: 100%;
-    height: 16px;
-    background: #e5e7eb;
+.result-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.detail-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 22px;
+}
+
+.detail-box h3 {
+    color: #172033;
+    margin-bottom: 12px;
+}
+
+.assessment-card {
+    margin-top: 30px;
+    padding: 28px;
+    background: white;
+    border: 1px solid #dce3eb;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.assessment-card h2 {
+    color: #12213f;
+    margin-bottom: 5px;
+}
+
+.assessment-card p {
+    color: #64748b;
+}
+
+.assessment-large-button {
+    display: inline-block;
+    padding: 14px 22px;
+    background: #1d4ed8;
+    color: white;
+    text-decoration: none;
     border-radius: 8px;
-    overflow: hidden;
-    margin-top: 15px;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
-.progress-bar {
-    width: 0%;
-    height: 100%;
-    background: #2563eb;
-    border-radius: 8px;
+.assessment-large-button:hover {
+    background: #163da8;
 }
 
-#probabilityMessage {
-    margin-top: 12px;
-    color: #666;
-    font-size: 14px;
-}
-
-
-/* ================================
-   Skill Gap
-================================ */
-
-.skill-section {
-    text-align: left;
-}
-
-.skill-section h3 {
-    color: #1f2937;
-    margin-bottom: 10px;
-}
-
-#skillSummary {
-    color: #555;
-    margin-bottom: 18px;
-}
-
-.skill-item {
-    background: #ffffff;
-    border: 1px solid #dfe3e8;
-    border-left: 4px solid #2563eb;
-    border-radius: 5px;
-    padding: 18px;
-    margin-bottom: 15px;
-}
-
-.skill-item h4 {
-    color: #1f2937;
-    font-size: 17px;
-    margin-bottom: 10px;
-}
-
-.skill-item p {
-    margin: 6px 0;
-    color: #444;
-}
-
-.skill-item strong {
-    color: #222;
-}
-
-.skill-item p:last-child {
-    background: #f3f4f6;
-    padding: 10px;
-    border-radius: 4px;
-    margin-top: 12px;
-}
-
-
-/* ================================
-   Score Bars
-================================ */
-
-.score-bar-container {
-    width: 100%;
-    height: 9px;
-    background: #e5e7eb;
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 7px 0 13px;
-}
-
-.score-bar {
-    height: 100%;
-    border-radius: 5px;
-}
-
-.student-score-bar {
-    background: #2563eb;
-}
-
-.baseline-score-bar {
-    background: #6b7280;
-}
-
-
-/* ================================
-   No Skill Gap
-================================ */
-
-.no-gap {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-left: 4px solid #16a34a;
-    padding: 15px;
-    border-radius: 5px;
-    color: #166534;
-}
-
-
-/* ================================
-   Result Reset
-================================ */
-
-#resultResetButton {
-    margin-top: 20px;
-    width: 100%;
-}
-
-
-/* ================================
-   Footer
-================================ */
-
-.footer {
+footer {
+    background: #12213f;
+    color: #cbd5e1;
     text-align: center;
-    color: #666;
-    font-size: 13px;
-    padding: 5px 0 20px;
+    padding: 25px;
+    margin-top: 30px;
 }
 
+footer p:first-child {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
 
-/* ================================
-   Responsive Design
-================================ */
+footer p:last-child {
+    font-size: 13px;
+    color: #94a3b8;
+}
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
 
-    .container {
-        width: 94%;
-        padding: 25px 0;
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    .header h1 {
-        font-size: 25px;
-    }
-
-    .header p {
-        font-size: 14px;
-    }
-
-    .card {
-        padding: 20px;
+    .top-header h1 {
+        font-size: 26px;
     }
 
     .form-grid {
         grid-template-columns: 1fr;
     }
 
-    .button-group {
-        flex-direction: column;
+    .result-details {
+        grid-template-columns: 1fr;
     }
 
-    #probability {
-        font-size: 34px;
+    .assessment-card {
+        flex-direction: column;
+        align-items: flex-start;
     }
+
+    .action-section {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .container {
+        width: 94%;
+        padding: 30px 0;
+    }
+
+    .form-card,
+    .result-card {
+        padding: 22px;
+    }
+
+    .top-header {
+        padding: 22px 4%;
+    }
+
+    .top-header h1 {
+        font-size: 23px;
+    }
+
+    .section-heading {
+        gap: 12px;
+    }
+}
+
+
+.footer-note {
+    color: #64748b;
+    font-size: 13px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+#assessmentHistorySection {
+    overflow: hidden;
+}
+
+#assessmentHistorySection table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#assessmentHistorySection th,
+#assessmentHistorySection td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #e5eaf0;
+    text-align: left;
+    white-space: nowrap;
+}
+
+#assessmentHistorySection th {
+    background: #f1f5f9;
+    color: #334155;
+    font-weight: 600;
+}
+
+#assessmentHistorySection td {
+    color: #475569;
+}
+
+#assessmentHistorySection p {
+    color: #64748b;
+}
+
+#assessmentHistorySection {
+    margin-top: 30px;
+}
+
+#assessmentHistorySection > p {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+#assessmentHistorySection > div {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-top: 18px;
+}
+
+#assessmentHistorySection table {
+    min-width: 1050px;
+    margin: 0;
+}
+
+#assessmentHistorySection th {
+    background: #f1f5f9;
+    font-size: 13px;
+}
+
+#assessmentHistorySection td {
+    font-size: 13px;
+}
+
+#assessmentHistorySection tbody tr:hover {
+    background: #f8fafc;
+}
+
+#assessmentHistorySection tbody tr:last-child td {
+    border-bottom: none;
+}
+
+@media (max-width: 750px) {
+    #assessmentHistorySection {
+        padding: 22px;
+    }
+}
+.prediction-label {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 5px;
+    background: #edf3ff;
+    color: #1d4ed8;
+    font-weight: 600;
+    font-size: 12px;
 }
