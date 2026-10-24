@@ -24,9 +24,15 @@ app.add_middleware(
 
 
 model = joblib.load("model/placement_model.joblib")
-assessment_model = joblib.load(
-    "model/assessment_placement_model.joblib"
-)
+assessment_model = None
+
+def get_assessment_model():
+    global assessment_model
+    if assessment_model is None:
+        assessment_model = joblib.load(
+            "model/assessment_placement_model.joblib"
+        )
+    return assessment_model
 
 
 skill_baselines = {
@@ -133,12 +139,14 @@ def predict_assessment(data: AssessmentPredictionRequest):
         "aptitude_score": data.aptitude_score
     }])
 
+    current_assessment_model = get_assessment_model()
+
     prediction = int(
-        assessment_model.predict(input_data)[0]
+        current_assessment_model.predict(input_data)[0]
     )
 
     probability = float(
-        assessment_model.predict_proba(input_data)[0][1] * 100
+        current_assessment_model.predict_proba(input_data)[0][1] * 100
     )
 
     # Identify skills that are below the configured baselines.
