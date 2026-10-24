@@ -76,11 +76,12 @@ model = Pipeline([
     (
         "classifier",
         RandomForestClassifier(
-            n_estimators=200,
+            n_estimators=30,
+            max_depth=12,
             class_weight="balanced",
             min_samples_leaf=5,
             random_state=42,
-            n_jobs=-1
+            n_jobs=1
         )
     )
 ])
@@ -123,7 +124,6 @@ print(confusion_matrix(y_test, predictions))
 
 joblib.dump(
     model,
-    "model/assessment_placement_model.joblib"
+    "model/assessment_placement_model_lite.joblib"
 )
-
-print("\nModel saved: model/assessment_placement_model.joblib")
+print("\nLite model saved: model/assessment_placement_model_lite.joblib")

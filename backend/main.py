@@ -30,7 +30,7 @@ def get_assessment_model():
     global assessment_model
     if assessment_model is None:
         assessment_model = joblib.load(
-            "model/assessment_placement_model.joblib"
+            "model/assessment_placement_model_lite.joblib"
         )
     return assessment_model
 
