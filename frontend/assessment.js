@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000";
+﻿const API_URL = "https://student-placement-ml-api.onrender.com";
 
 let studentProfile = null;
 
@@ -127,7 +127,7 @@ const questionBank = [
         level: "Intermediate",
         skill: "DSA",
         question: "What is the average time complexity of binary search?",
-        options: ["O(n)", "O(log n)", "O(n²)", "O(1)"],
+        options: ["O(n)", "O(log n)", "O(nÂ²)", "O(1)"],
         answer: 1,
         explanation: "Binary search runs in O(log n) time."
     },
@@ -169,9 +169,9 @@ const questionBank = [
         level: "Advanced",
         skill: "DSA",
         question: "What is the worst-case complexity of quicksort?",
-        options: ["O(log n)", "O(n)", "O(n log n)", "O(n²)"],
+        options: ["O(log n)", "O(n)", "O(n log n)", "O(nÂ²)"],
         answer: 3,
-        explanation: "Worst-case quicksort complexity is O(n²)."
+        explanation: "Worst-case quicksort complexity is O(nÂ²)."
     },
     {
         id: 12,
@@ -363,7 +363,7 @@ const questionBank = [
         level: "Advanced",
         skill: "DSA",
         question: "What is the time complexity of accessing an array element by index?",
-        options: ["O(1)", "O(log n)", "O(n)", "O(n²)"],
+        options: ["O(1)", "O(log n)", "O(n)", "O(nÂ²)"],
         answer: 0,
         explanation: "Array index access is O(1)."
     }
@@ -440,7 +440,7 @@ function renderQuestion() {
         `Question ${currentQuestion + 1} of ${assessmentQuestions.length}`;
 
     levelInfo.textContent =
-        `${question.level} • ${question.skill}`;
+        `${question.level} â€¢ ${question.skill}`;
 
     progressBar.style.width =
         `${((currentQuestion + 1) / assessmentQuestions.length) * 100}%`;
@@ -1617,3 +1617,4 @@ retakeButton.addEventListener("click", () => {
     sessionStorage.removeItem("assessmentData");
     location.reload();
 });
+

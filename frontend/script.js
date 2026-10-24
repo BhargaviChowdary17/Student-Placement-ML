@@ -1,4 +1,4 @@
-
+﻿
 const studentProfileForm = document.getElementById("studentProfileForm");
 const profileMessage = document.getElementById("profileMessage");
 
@@ -34,7 +34,7 @@ async function loadAssessmentHistory() {
     section.innerHTML = "<h2>Assessment History</h2><p>Loading...</p>";
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/assessment-history");
+        const response = await fetch("https://student-placement-ml-api.onrender.com/assessment-history");
 
         if (!response.ok) {
             throw new Error("Unable to load history");
@@ -98,3 +98,4 @@ if (document.readyState === "loading") {
 } else {
     loadAssessmentHistory();
 }
+
