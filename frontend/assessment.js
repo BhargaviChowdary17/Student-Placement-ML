@@ -1473,11 +1473,15 @@ function restoreAssessmentResults() {
     startSection.style.display = "none";
     resultSection.style.display = "block";
 }
-
 // Prevent duplicate submissions if the button is clicked repeatedly.
 let codingSubmissionInProgress = false;
 
-restoreAssessmentResults();
+const params = new URLSearchParams(window.location.search);
+
+if (params.get("new") !== "1") {
+    restoreAssessmentResults();
+}
+
 
 // Connect assessment buttons after all functions are defined.
 startButton.addEventListener("click", startAssessment);

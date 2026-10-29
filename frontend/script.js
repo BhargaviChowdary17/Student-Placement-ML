@@ -15,13 +15,14 @@ if (studentProfileForm) {
         };
 
         sessionStorage.setItem("studentProfile", JSON.stringify(studentProfile));
+        sessionStorage.removeItem("assessmentData");
 
         if (profileMessage) {
             profileMessage.classList.remove("hidden");
         }
 
         setTimeout(function () {
-            window.location.href = "assessment.html";
+            window.location.href = "assessment.html?new=1";
         }, 700);
     });
 }
